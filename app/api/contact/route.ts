@@ -8,8 +8,8 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: 'Croes Construct <onboarding@resend.dev>',
-      to: 'wauthij.kevin@gmail.com',
+      from: 'Croes Construct <offerte@croesconstruct.be>',
+      to: 'Croes-construct@hotmail.com',
       subject: `Nieuwe offerte aanvraag van ${name}`,
       html: `
         <h2>Nieuwe offerte aanvraag</h2>
