@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Waves, Car, Grid3X3, TreeDeciduous, HardHat } from "lucide-react";
+import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -87,7 +87,7 @@ function HeroSection() {
           Vakmanschap dat uw buitenruimte transformeert
         </h1>
         <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-          Van tuinaanleg en opritten tot zwembaden en omheiningen — wij realiseren uw buitenproject van A tot Z.
+          Van tuinaanleg en opritten tot terrassen en omheiningen — wij realiseren uw buitenproject van A tot Z.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#diensten">
@@ -118,7 +118,6 @@ function ServicesSection() {
   const services = [
     { icon: Leaf, title: "Tuinaanleg", description: "Van concept tot realisatie: wij ontwerpen en creëren tuinen die perfect aansluiten bij uw wensen en levensstijl." },
     { icon: Fence, title: "Omheiningen", description: "Stijlvolle en duurzame omheiningen die privacy bieden en uw tuin een elegante afwerking geven." },
-    { icon: Waves, title: "Zwembaden", description: "Luxueuze zwembaden die naadloos integreren in uw tuin en zorgen voor jarenlang zwemplezier." },
     { icon: Car, title: "Opritten", description: "Functionele en esthetische opritten die de eerste indruk van uw woning onvergetelijk maken." },
     { icon: Grid3X3, title: "Terrassen", description: "Sfeervolle terrassen in diverse materialen voor ultiem buitengenot en gezellige momenten." },
     { icon: TreeDeciduous, title: "Snoeien van bomen", description: "Professioneel snoeiwerk voor gezonde, veilige en esthetisch verzorgde bomen in uw tuin." },
@@ -425,7 +424,6 @@ function ContactSection() {
                     <option value="">Selecteer een dienst</option>
                     <option value="tuinaanleg">Tuinaanleg</option>
                     <option value="omheiningen">Omheiningen</option>
-                    <option value="zwembaden">Zwembaden</option>
                     <option value="opritten">Opritten</option>
                     <option value="terrassen">Terrassen</option>
                     <option value="snoeien">Snoeien van bomen</option>
@@ -502,8 +500,8 @@ function Footer() {
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/40 text-sm">© 2026 Croes Construct. Alle rechten voorbehouden.</p>
           <div className="flex gap-6">
-            <a href="#" className="text-background/40 hover:text-background text-sm transition-colors">Privacy</a>
-            <a href="#" className="text-background/40 hover:text-background text-sm transition-colors">Voorwaarden</a>
+            <a href="/privacy" className="text-background/40 hover:text-background text-sm transition-colors">Privacy</a>
+            <a href="/voorwaarden" className="text-background/40 hover:text-background text-sm transition-colors">Voorwaarden</a>
           </div>
         </div>
       </div>
