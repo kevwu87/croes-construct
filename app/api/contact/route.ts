@@ -1,9 +1,27 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(3, '1 h'), // max 3 aanvragen per uur per IP
+});
+
 export async function POST(request: Request) {
+  // Rate limiting check
+  const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
+  const { success, limit, remaining } = await ratelimit.limit(ip);
+
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Te veel aanvragen. Probeer het later opnieuw.' },
+      { status: 429 }
+    );
+  }
+
   const { name, phone, email, address, service, description, period, message } = await request.json();
 
   try {
