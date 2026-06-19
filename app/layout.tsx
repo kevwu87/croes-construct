@@ -15,25 +15,18 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Croes Construct | Tuinaanleg & Constructie',
-  description: 'Premium tuinaanleg, omheiningen, zwembaden en opritten in België. Vakmanschap en kwaliteit voor uw buitenruimte.',
-  generator: 'v0.app',
+  title: 'Croes Construct | Tuinaannemer Koksijde, Oostende & Kust',
+  description: 'Tuinaanleg, omheiningen, terrassen en opritten in Koksijde, Oostende, Veurne, Nieuwpoort en Brugge. Vakmanschap en kwaliteit voor uw buitenruimte.',
+  keywords: 'tuinaannemer Koksijde, tuinaanleg Oostende, hovenier Veurne, terrassen Nieuwpoort, omheiningen Brugge, tuinaanleg West-Vlaanderen',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: '/icon.png',
     apple: '/apple-icon.png',
+  },
+  openGraph: {
+    title: 'Croes Construct | Tuinaannemer aan de Kust',
+    description: 'Vakmanschap dat uw buitenruimte transformeert. Actief in Koksijde, Oostende, Veurne, Nieuwpoort en Brugge.',
+    locale: 'nl_BE',
+    type: 'website',
   },
 }
 
