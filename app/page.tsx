@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat } from "lucide-react";
+import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -494,6 +494,14 @@ function Footer() {
               <li><a href="tel:+32478406967" className="text-background/60 hover:text-background transition-colors">+32 478 40 69 67</a></li>
               <li><a href="mailto:Croes-construct@hotmail.com" className="text-background/60 hover:text-background transition-colors">Croes-construct@hotmail.com</a></li>
             </ul>
+            <div className="flex gap-4 mt-6">
+              <a href="https://www.facebook.com/p/Tuinen-Croes-100027303922559/?locale=nl_NL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-background/10 hover:bg-background/20 rounded-full flex items-center justify-center transition-colors">
+                <Facebook className="w-5 h-5 text-background" />
+              </a>
+              <a href="https://www.instagram.com/tuinen_croes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-background/10 hover:bg-background/20 rounded-full flex items-center justify-center transition-colors">
+                <Instagram className="w-5 h-5 text-background" />
+              </a>
+            </div>
           </div>
         </div>
 
