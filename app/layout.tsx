@@ -50,7 +50,13 @@ const localBusinessSchema = {
   email: 'Croes-construct@hotmail.com',
   founder: { '@type': 'Person', name: 'Tobias Croes' },
   areaServed: ['Koksijde', 'Oostende', 'Veurne', 'Nieuwpoort', 'Brugge'],
-  address: { '@type': 'PostalAddress', addressCountry: 'BE' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Viooltjesstraat 13',
+    addressLocality: 'Koksijde',
+    postalCode: '8670',
+    addressCountry: 'BE',
+  },
   sameAs: [
     'https://www.facebook.com/p/Tuinen-Croes-100027303922559/?locale=nl_NL',
     'https://www.instagram.com/tuinen_croes/',

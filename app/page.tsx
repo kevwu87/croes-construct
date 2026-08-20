@@ -485,6 +485,7 @@ function Footer() {
           <div>
             <h4 className="font-medium text-background mb-4">Eigenaar</h4>
             <p className="text-background/80 font-medium mb-2">Tobias Croes</p>
+            <p className="text-background/60 text-sm">Viooltjesstraat 13, 8670 Koksijde</p>
             <p className="text-background/60 text-sm">BTW: BE 1032 219 065</p>
           </div>
 
