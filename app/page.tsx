@@ -84,7 +84,7 @@ function HeroSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32 text-center">
         <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-6">Tuinaanleg & Constructie</p>
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-tight max-w-4xl mx-auto text-balance">
-          Vakmanschap dat uw buitenruimte transformeert
+          Tuinaannemer aan de Kust — vakmanschap dat uw buitenruimte transformeert
         </h1>
         <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
           Van tuinaanleg en opritten tot terrassen en omheiningen — wij realiseren uw buitenproject van A tot Z.
@@ -162,6 +162,7 @@ function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?q=80&w=2000&auto=format&fit=crop"
                 alt="Tobias Croes - Tuinaannemer"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -270,7 +271,7 @@ function ProjectsSection() {
               onClick={() => openLightbox(index)}
               className={`group relative overflow-hidden rounded-lg cursor-pointer ${index === 0 ? "col-span-2 aspect-video" : "aspect-[4/3]"}`}
             >
-              <img src={src} alt={`${projects[activeProject].title} foto ${index + 1}`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={src} alt={`${projects[activeProject].title} foto ${index + 1}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="w-12 h-12 bg-background/90 rounded-full flex items-center justify-center">
