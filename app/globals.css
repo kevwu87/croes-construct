@@ -116,6 +116,11 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(0.5rem); opacity: 1; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

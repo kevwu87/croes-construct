@@ -107,7 +107,7 @@ function HeroSection() {
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
         <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full mt-2 animate-bounce" />
+          <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full mt-2" style={{ animation: 'scroll-hint 2s cubic-bezier(0.16, 1, 0.3, 1) infinite' }} />
         </div>
       </div>
     </section>
