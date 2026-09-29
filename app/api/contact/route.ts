@@ -13,7 +13,11 @@ const ratelimit = new Ratelimit({
 export async function POST(request: Request) {
   // Rate limiting check
   const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
-  const { success, limit, remaining } = await ratelimit.limit(ip);
+  // ponytail: rate limit faalt open; ligt Upstash plat, dan gaan aanvragen door zonder limiet
+  const success = await ratelimit.limit(ip).then((r) => r.success, (err) => {
+    console.error('Rate limit niet bereikbaar:', err);
+    return true;
+  });
 
   if (!success) {
     return NextResponse.json(
