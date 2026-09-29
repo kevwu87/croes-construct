@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Algemene voorwaarden | Croes Construct',
+  alternates: { canonical: '/voorwaarden' },
+}
+
 export default function VoorwaardenPage() {
   return (
     <div className="min-h-screen bg-background pt-32 pb-24">

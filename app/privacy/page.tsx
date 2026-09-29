@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacybeleid | Croes Construct',
+  alternates: { canonical: '/privacy' },
+}
+
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-background pt-32 pb-24">

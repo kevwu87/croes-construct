@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { faqs } from "@/lib/content";
 import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat, Scissors, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -127,13 +129,13 @@ function HeroSection() {
 
 function ServicesSection() {
   const services = [
-    { icon: Leaf, title: "Tuinaanleg", description: "Nieuwe tuin of volledige renovatie: grondwerk, gazon of kunstgras, borders, beplanting en cortenstalen boordranden." },
-    { icon: Fence, title: "Omheiningen", description: "Houten schermen, draadafsluitingen en poorten. De palen gaan minstens 75 cm diep, zodat ze stormachtig weer aan de kust aankunnen." },
-    { icon: Car, title: "Opritten", description: "Opritten in kasseien, klinkers of grind, op een fundering die niet verzakt wanneer er dagelijks een wagen over rijdt." },
-    { icon: Grid3X3, title: "Terrassen", description: "Terrassen en paden in kasseien, klinkers, grind, tegels, natuursteen of hout." },
-    { icon: TreeDeciduous, title: "Snoeien van bomen", description: "Vormsnoei, onderhoudssnoei en het inkorten van bomen die te groot werden voor hun plek." },
-    { icon: Scissors, title: "Tuinonderhoud", description: "Snoeien, hagen scheren en het algemene onderhoud van uw tuin, ook voor tuinen die wij niet zelf aanlegden." },
-    { icon: HardHat, title: "Grond- en rioleringswerken", description: "Uitgraven, nivelleren en afbraak, afvoerleidingen, zichtputten en de aansluiting van regenwaterputten. Van A tot Z, door ons eigen team." },
+    { icon: Leaf, title: "Tuinaanleg", slug: "tuinaanleg", description: "Nieuwe tuin of volledige renovatie: grondwerk, gazon of kunstgras, borders, beplanting en cortenstalen boordranden." },
+    { icon: Fence, title: "Omheiningen", slug: "omheiningen", description: "Houten schermen, draadafsluitingen en poorten. De palen gaan minstens 75 cm diep, zodat ze stormachtig weer aan de kust aankunnen." },
+    { icon: Car, title: "Opritten", slug: "opritten", description: "Opritten in kasseien, klinkers of grind, op een fundering die niet verzakt wanneer er dagelijks een wagen over rijdt." },
+    { icon: Grid3X3, title: "Terrassen", slug: "terrassen-en-paden", description: "Terrassen en paden in kasseien, klinkers, grind, tegels, natuursteen of hout." },
+    { icon: TreeDeciduous, title: "Snoeien van bomen", slug: "tuinonderhoud-en-snoeien", description: "Vormsnoei, onderhoudssnoei en het inkorten van bomen die te groot werden voor hun plek." },
+    { icon: Scissors, title: "Tuinonderhoud", slug: "tuinonderhoud-en-snoeien", description: "Snoeien, hagen scheren en het algemene onderhoud van uw tuin, ook voor tuinen die wij niet zelf aanlegden." },
+    { icon: HardHat, title: "Grond- en rioleringswerken", slug: "grondwerken-en-riolering", description: "Uitgraven, nivelleren en afbraak, afvoerleidingen, zichtputten en de aansluiting van regenwaterputten. Van A tot Z, door ons eigen team." },
   ];
 
   return (
@@ -149,8 +151,13 @@ function ServicesSection() {
           {services.map((service) => (
             <div key={service.title} className="border-t border-border pt-6">
               <service.icon className="w-6 h-6 text-accent mb-4" aria-hidden="true" />
-              <h3 className="font-serif text-2xl text-foreground mb-3">{service.title}</h3>
+              <h3 className="font-serif text-2xl text-foreground mb-3">
+                <Link href={`/diensten/${service.slug}`} className="hover:text-accent transition-colors">{service.title}</Link>
+              </h3>
               <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              <Link href={`/diensten/${service.slug}`} className="inline-flex items-center mt-4 text-sm font-medium text-primary hover:text-accent transition-colors" aria-label={`Meer over ${service.title.toLowerCase()}`}>
+                Meer over {service.title.toLowerCase()} <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
           ))}
         </div>
@@ -317,27 +324,6 @@ function ProjectsSection() {
   );
 }
 
-const faqs = [
-  { q: "Is een plaatsbezoek en offerte gratis?", a: "Ja, zowel het plaatsbezoek als de offerte zijn gratis. We streven ernaar om de offerte binnen twee weken te bezorgen. Is het erg druk, dan duurt het maximaal een maand." },
-  { q: "Hoe rekenen jullie?", a: "Wij werken meestal in regie: u betaalt de werkuren plus het materiaal aan een vaste prijs. Het uurtarief vindt u in de offerte.\nVoor gazon hanteren we een vaste prijs, exclusief btw:\n• graszoden leggen: € 15 per m²\n• gazon inzaaien: € 10 per m²\nIn die prijs zit het uitspreiden van de aangevoerde grond, het harken en het leggen of inzaaien. De aanvoer van de grond zelf wordt apart aangerekend." },
-  { q: "Kan ik zelf mijn materiaal kiezen?", a: "Ja. Voor granulaat, grasdallen en waterdoorlatende verharding verwijzen we u naar Jatu (www.jatu.be), de website voor particulieren van Gravelart. Voor tegels kunt u terecht bij Interieur Center Dekeyser in Veurne of bij Verhelst Bouwmaterialen in Veurne of Oostende." },
-  { q: "Welk btw-tarief betaal ik?", a: "Is uw woning ouder dan 10 jaar en woont u er zelf? Dan geldt voor een deel van de werken 6% in plaats van 21%:\n• terras direct tegen de woning: 6%\n• oprit van de straat naar de voordeur, of naar een garage die deel uitmaakt van de woning: 6%\n• oprit naar een losstaande garage, of een parkeerplaats: 21%\n• terras midden in de tuin, tuinaanleg en omheiningen: 21%\nWij bekijken per offerte welk deel aan 6% kan, en zetten dat apart op de factuur." },
-  { q: "Moet ik een voorschot betalen?", a: "Meestal niet. Voor grotere projecten kunnen we een voorschot vragen. Dat staat dan duidelijk in de offerte." },
-  { q: "Heb ik een vergunning nodig voor een terras of oprit?", a: "Meestal niet. In Vlaanderen mag u zonder vergunning tot 80 m² verharden in de zij- en achtertuin. Dat is alles samen: terras, paden, oprit, kunstgras en grindzones. Het regenwater moet dan wel in uw eigen tuin in de grond kunnen lopen. Gaat u daarover, of legt u iets aan in de voortuin? Dan kijken wij samen met u na wat er nodig is. Sommige gemeenten hebben ook eigen regels." },
-  { q: "Kasseien, klinkers of grind?", a: "Wij leggen ze alle drie, voor terrassen, opritten en paden. Een combinatie kan ook, bijvoorbeeld rijstroken in kasseien met grind ertussen. Bij het plaatsbezoek bekijken we wat het best past bij uw woning en gebruik." },
-  { q: "Kunstgras of echt gras?", a: "Wij leggen beide. Echt gras kan als graszoden (€ 15 per m², excl. btw) of ingezaaid (€ 10 per m², excl. btw). Let op: kunstgras telt mee als verharding voor de vergunningsregel van 80 m²." },
-  { q: "Wat met regenwater en riolering?", a: "Ook dat doen wij: grondwerken, afvoerleidingen, zichtputten en de aansluiting van regenwaterputten. Zo hoeft u voor uw buitenwerk geen aparte firma te zoeken: ons eigen team doet het van A tot Z." },
-  { q: "Hoe hoog kan een omheining?", a: "Wij plaatsen omheiningen tot 2,50 m hoog. Tot 2 m in de zij- en achtertuin is geen vergunning nodig. In de voortuin mag een gesloten omheining zonder vergunning maximaal 1 m hoog zijn. Wilt u hoger, dan kijken wij samen met u na welke vergunning nodig is." },
-  { q: "Welke omheining houdt het aan zee?", a: "U kiest zelf het materiaal en de stijl. Wat voor ons vaststaat is de plaatsing: de palen gaan minstens 75 cm diep in de grond, zodat de omheining stormachtig weer aan de kust aankan." },
-  { q: "Hoe lang moet ik wachten voor jullie kunnen starten?", a: "Dat hangt af van de drukte. In de winter en de herfst kunnen we meestal snel starten. Vanaf het voorjaar is de planning vaak vol tot na de zomer. Wilt u in het voorjaar of de zomer klaar zijn, neem dan best in de winter al contact op." },
-  { q: "Hoe lang duren de werken?", a: "Een richtlijn:\n• oprit van ± 50 m²: een goede week\n• terras van ± 30 m²: drie à vier dagen, afhankelijk van de afwerking\n• omheining van ± 20 m: een werkweek\n• volledige renovatie van een kleine tuin: drie à vier weken, afhankelijk van wat er moet gebeuren" },
-  { q: "Wanneer leg je best een tuin aan?", a: "Verhardingen en omheiningen kunnen het hele jaar door, behalve bij vorst. Gazon en beplanting leg je best aan in het voorjaar of het najaar." },
-  { q: "Moet ik thuis zijn tijdens de werken?", a: "Nee. Wij hebben enkel toegang tot de tuin nodig, met water en stroom." },
-  { q: "Voeren jullie grond en afval af?", a: "Ja, wij voeren al het afval af dat u wilt laten weghalen. De afvoer zit niet in de prijs van het werk: ze wordt apart aangerekend en staat afzonderlijk op de factuur." },
-  { q: "In welke gemeenten werken jullie?", a: "Wij werken in heel West-Vlaanderen, vooral aan de Kust: Koksijde, De Panne, Nieuwpoort, Middelkerke, Veurne, Diksmuide, Oostende, Brugge en hun deelgemeenten. Voor grondwerken gaan we soms ook verder; vraag het gerust." },
-  { q: "Zijn jullie verzekerd en is er garantie?", a: "Wij hebben een BA-verzekering. Een vaste garantietermijn geven we niet, maar ligt een probleem aan ons werk, dan brengen we het in orde." },
-  { q: "Doen jullie ook tuinonderhoud?", a: "Ja. Naast de aanleg doen wij ook tuinonderhoud: snoeien, hagen scheren en het algemene onderhoud van uw tuin. Ook als wij uw tuin niet zelf aanlegden." },
-];
 
 const faqSchema = {
   "@context": "https://schema.org",
