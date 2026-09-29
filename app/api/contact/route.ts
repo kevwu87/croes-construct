@@ -22,23 +22,34 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, phone, email, address, service, description, period, message } = await request.json();
+  const body = await request.json().catch(() => ({}));
+  // Formulierinvoer komt in een HTML-mail: afkappen en escapen
+  const field = (key: string, max = 200) =>
+    String(body[key] ?? '').trim().slice(0, max)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const name = field('name');
+  const phone = field('phone', 40);
+  const email = String(body.email ?? '').trim().slice(0, 200);
+  const description = field('description', 3000);
+
+  if (!name || !phone || !description) {
+    return NextResponse.json({ error: 'Naam, telefoon en omschrijving zijn verplicht.' }, { status: 400 });
+  }
 
   try {
     await resend.emails.send({
       from: 'Croes Construct <offerte@croesconstruct.be>',
       to: 'Croes-construct@hotmail.com',
-      subject: `Nieuwe offerte aanvraag van ${name}`,
+      ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && { replyTo: email }),
+      subject: `Nieuwe offerte aanvraag van ${String(body.name).trim().slice(0, 80)}`,
       html: `
         <h2>Nieuwe offerte aanvraag</h2>
         <p><strong>Naam:</strong> ${name}</p>
         <p><strong>Telefoon:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Adres werf:</strong> ${address || 'Niet ingevuld'}</p>
-        <p><strong>Dienst:</strong> ${service}</p>
-        <p><strong>Omschrijving:</strong> ${description}</p>
-        <p><strong>Gewenste periode:</strong> ${period || 'Niet ingevuld'}</p>
-        <p><strong>Extra opmerkingen:</strong> ${message || 'Geen'}</p>
+        <p><strong>E-mail:</strong> ${field('email') || 'Niet ingevuld'}</p>
+        <p><strong>Gemeente:</strong> ${field('address') || 'Niet ingevuld'}</p>
+        <p><strong>Dienst:</strong> ${field('service', 40) || 'Niet gekozen'}</p>
+        <p><strong>Wat wil de klant laten doen:</strong><br>${description.replace(/\n/g, '<br>')}</p>
       `,
     });
 

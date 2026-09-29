@@ -365,16 +365,7 @@ function ContactSection() {
     setError(false);
 
     const form = e.currentTarget;
-    const data = {
-      name: (form.querySelector('#name') as HTMLInputElement).value,
-      phone: (form.querySelector('#phone') as HTMLInputElement).value,
-      email: (form.querySelector('#email') as HTMLInputElement).value,
-      address: (form.querySelector('#address') as HTMLInputElement).value,
-      service: (form.querySelector('#service') as HTMLSelectElement).value,
-      description: (form.querySelector('#description') as HTMLTextAreaElement).value,
-      period: (form.querySelector('#period') as HTMLSelectElement).value,
-      message: (form.querySelector('#message') as HTMLTextAreaElement).value,
-    };
+    const data = Object.fromEntries(new FormData(form));
 
     try {
       const res = await fetch('/api/contact', {
@@ -441,67 +432,50 @@ function ContactSection() {
                   </svg>
                 </div>
                 <h4 className="font-serif text-xl text-foreground mb-2">Aanvraag verstuurd!</h4>
-                <p className="text-muted-foreground">Wij nemen zo snel mogelijk contact met u op.</p>
+                <p className="text-muted-foreground">Wij bellen u zo snel mogelijk terug.</p>
               </div>
             ) : (
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="grid sm:grid-cols-2 gap-5">
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">Naam *</label>
-                    <input type="text" id="name" required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="Uw naam" />
+                    <input type="text" id="name" name="name" required autoComplete="name" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm text-muted-foreground mb-2">Telefoon *</label>
-                    <input type="tel" id="phone" required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="+32 ..." />
+                    <input type="tel" id="phone" name="phone" required autoComplete="tel" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="04.. .. .. .." />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm text-muted-foreground mb-2">E-mail</label>
+                    <input type="email" id="email" name="email" autoComplete="email" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" />
+                  </div>
+                  <div>
+                    <label htmlFor="address" className="block text-sm text-muted-foreground mb-2">Gemeente</label>
+                    <input type="text" id="address" name="address" autoComplete="address-level2" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="bv. Koksijde" />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm text-muted-foreground mb-2">E-mail *</label>
-                  <input type="email" id="email" required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="uw@email.be" />
-                </div>
-                <div>
-                  <label htmlFor="address" className="block text-sm text-muted-foreground mb-2">Adres werf</label>
-                  <input type="text" id="address" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground" placeholder="Straat, gemeente" />
-                </div>
-                <div>
-                  <label htmlFor="service" className="block text-sm text-muted-foreground mb-2">Dienst *</label>
-                  <select id="service" required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground">
-                    <option value="">Selecteer een dienst</option>
+                  <label htmlFor="service" className="block text-sm text-muted-foreground mb-2">Dienst</label>
+                  <select id="service" name="service" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground">
+                    <option value="">Kies een dienst (optioneel)</option>
                     <option value="tuinaanleg">Tuinaanleg</option>
-                    <option value="omheiningen">Omheiningen</option>
                     <option value="opritten">Opritten</option>
-                    <option value="terrassen">Terrassen</option>
-                    <option value="snoeien">Snoeien van bomen</option>
-                    <option value="onderhoud">Tuinonderhoud</option>
+                    <option value="terrassen">Terrassen en paden</option>
+                    <option value="omheiningen">Omheiningen</option>
                     <option value="grondwerken">Grond- en rioleringswerken</option>
-                    <option value="totaalproject">Totaalproject (combinatie)</option>
-                    <option value="andere">Andere</option>
+                    <option value="onderhoud">Tuinonderhoud en snoeien</option>
+                    <option value="combinatie">Combinatie of iets anders</option>
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="description" className="block text-sm text-muted-foreground mb-2">Omschrijving project *</label>
-                  <textarea id="description" rows={3} required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none" placeholder="Beschrijf uw project zo gedetailleerd mogelijk..." />
-                </div>
-                <div>
-                  <label htmlFor="period" className="block text-sm text-muted-foreground mb-2">Gewenste uitvoeringsperiode</label>
-                  <select id="period" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground">
-                    <option value="">Selecteer een periode</option>
-                    <option value="zo-snel-mogelijk">Zo snel mogelijk</option>
-                    <option value="1-3-maanden">Binnen 1-3 maanden</option>
-                    <option value="3-6-maanden">Binnen 3-6 maanden</option>
-                    <option value="6-12-maanden">Binnen 6-12 maanden</option>
-                    <option value="volgend-jaar">Volgend jaar</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm text-muted-foreground mb-2">Extra opmerkingen</label>
-                  <textarea id="message" rows={3} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none" placeholder="Heeft u nog extra vragen of opmerkingen?" />
+                  <label htmlFor="description" className="block text-sm text-muted-foreground mb-2">Wat wilt u laten doen? *</label>
+                  <textarea id="description" name="description" rows={3} required className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none" placeholder="Een paar zinnen volstaat, bv. oprit van 40 m² in klinkers" />
                 </div>
                 {error && (
                   <p className="text-red-500 text-sm">Er ging iets mis. Probeer opnieuw of bel ons direct.</p>
                 )}
                 <Button type="submit" disabled={sending} className="w-full bg-primary text-primary-foreground hover:bg-accent py-6">
-                  {sending ? 'Versturen...' : 'Verstuur aanvraag'}
+                  {sending ? 'Versturen...' : 'Vraag offerte aan'}
                   {!sending && <ArrowRight className="ml-2 w-4 h-4" />}
                 </Button>
               </form>
