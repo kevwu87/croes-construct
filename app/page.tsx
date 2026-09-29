@@ -166,13 +166,12 @@ function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-muted">
-              {/* TODO: vervangen door echte foto van Tobias op de werf */}
               <Image
-                src="/images/project 10.1.jpg"
-                alt="Werf van Croes Construct: aanleg van een terras met laser, kruiwagen en stapels tegels"
+                src="/images/tobias.jpg"
+                alt="Tobias Croes, zaakvoerder van Croes Construct, in een tuin in Koksijde"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover object-[center_35%]"
               />
             </div>
           </div>

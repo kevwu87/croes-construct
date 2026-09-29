@@ -52,7 +52,7 @@ const localBusinessSchema = {
   url: 'https://www.croesconstruct.be',
   telephone: '+32478406967',
   email: 'Croes-construct@hotmail.com',
-  founder: { '@type': 'Person', name: 'Tobias Croes' },
+  founder: { '@type': 'Person', name: 'Tobias Croes', jobTitle: 'Zaakvoerder', image: 'https://www.croesconstruct.be/images/tobias.jpg' },
   areaServed: ['Koksijde', 'De Panne', 'Nieuwpoort', 'Middelkerke', 'Veurne', 'Diksmuide', 'Oostende', 'Brugge', { '@type': 'AdministrativeArea', name: 'West-Vlaanderen' }],
   vatID: 'BE1032219065',
   foundingDate: '2019',
