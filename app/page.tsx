@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat, Facebook, Instagram } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, Phone, Mail, ArrowRight, Leaf, Fence, Car, Grid3X3, TreeDeciduous, HardHat, Scissors, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <ServicesSection />
       <AboutSection />
       <ProjectsSection />
+      <FaqSection />
       <ContactSection />
       <Footer />
     </div>
@@ -41,6 +43,7 @@ function Navigation({
           <div className="hidden md:flex items-center gap-8">
             <a href="#diensten" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Diensten</a>
             <a href="#projecten" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Projecten</a>
+            <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Vragen</a>
             <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
             <a href="#contact">
               <Button className="bg-primary text-primary-foreground hover:bg-accent">Offerte aanvragen</Button>
@@ -61,6 +64,7 @@ function Navigation({
             <div className="flex flex-col gap-4">
               <a href="#diensten" className="text-foreground py-2" onClick={() => setMobileMenuOpen(false)}>Diensten</a>
               <a href="#projecten" className="text-foreground py-2" onClick={() => setMobileMenuOpen(false)}>Projecten</a>
+              <a href="#faq" className="text-foreground py-2" onClick={() => setMobileMenuOpen(false)}>Vragen</a>
               <a href="#contact" className="text-foreground py-2" onClick={() => setMobileMenuOpen(false)}>Contact</a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="bg-primary text-primary-foreground hover:bg-accent w-full">Offerte aanvragen</Button>
@@ -77,29 +81,36 @@ function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=2832&auto=format&fit=crop')` }} />
-        <div className="absolute inset-0 bg-primary/70" />
+        <Image
+          src="/images/project 1.1.jpg"
+          alt="Aangelegde tuin met gestreept gazon en cortenstalen boordranden rond een villa met rieten dak in Koksijde"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 md:py-32 text-center">
-        <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-6">Tuinaanleg & Constructie</p>
+        <p className="text-primary-foreground/80 uppercase tracking-[0.3em] text-sm mb-6">Koksijde · Westkust</p>
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-tight max-w-4xl mx-auto text-balance">
-          Tuinaannemer aan de Kust — vakmanschap dat uw buitenruimte transformeert
+          Tuinaannemer aan de Kust
         </h1>
-        <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-          Van tuinaanleg en opritten tot terrassen en omheiningen — wij realiseren uw buitenproject van A tot Z.
+        <p className="mt-8 text-lg md:text-xl text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
+          Tuinaanleg, opritten, terrassen en omheiningen in Koksijde, Nieuwpoort, Veurne en omstreken. Van het grondwerk tot de laatste plant.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#diensten">
+          <a href="#contact">
             <Button size="lg" className="bg-background text-foreground hover:bg-background/90 px-8 py-6 text-base">
-              Ontdek onze diensten
+              Vraag een offerte
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </a>
-          <a href="#projecten">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent px-8 py-6 text-base">
-              Bekijk onze projecten
-              <ArrowRight className="ml-2 w-4 h-4" />
+          <a href="tel:+32478406967">
+            <Button size="lg" className="bg-transparent border border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-base">
+              <Phone className="mr-2 w-4 h-4" />
+              0478 40 69 67
             </Button>
           </a>
         </div>
@@ -116,34 +127,30 @@ function HeroSection() {
 
 function ServicesSection() {
   const services = [
-    { icon: Leaf, title: "Tuinaanleg", description: "Van concept tot realisatie: wij ontwerpen en creëren tuinen die perfect aansluiten bij uw wensen en levensstijl." },
-    { icon: Fence, title: "Omheiningen", description: "Stijlvolle en duurzame omheiningen die privacy bieden en uw tuin een elegante afwerking geven." },
-    { icon: Car, title: "Opritten", description: "Functionele en esthetische opritten die de eerste indruk van uw woning onvergetelijk maken." },
-    { icon: Grid3X3, title: "Terrassen", description: "Sfeervolle terrassen in diverse materialen voor ultiem buitengenot en gezellige momenten." },
-    { icon: TreeDeciduous, title: "Snoeien van bomen", description: "Professioneel snoeiwerk voor gezonde, veilige en esthetisch verzorgde bomen in uw tuin." },
-    { icon: HardHat, title: "Grond- en rioleringswerken", description: "Vakkundige grond- en rioleringswerken als stevige basis voor elk bouwproject." },
+    { icon: Leaf, title: "Tuinaanleg", description: "Nieuwe tuin of volledige renovatie: grondwerk, gazon of kunstgras, borders, beplanting en cortenstalen boordranden." },
+    { icon: Fence, title: "Omheiningen", description: "Houten schermen, draadafsluitingen en poorten. De palen gaan minstens 75 cm diep, zodat ze stormachtig weer aan de kust aankunnen." },
+    { icon: Car, title: "Opritten", description: "Opritten in kasseien, klinkers of grind, op een fundering die niet verzakt wanneer er dagelijks een wagen over rijdt." },
+    { icon: Grid3X3, title: "Terrassen", description: "Terrassen en paden in kasseien, klinkers, grind, tegels, natuursteen of hout." },
+    { icon: TreeDeciduous, title: "Snoeien van bomen", description: "Vormsnoei, onderhoudssnoei en het inkorten van bomen die te groot werden voor hun plek." },
+    { icon: Scissors, title: "Tuinonderhoud", description: "Snoeien, hagen scheren en het algemene onderhoud van uw tuin, ook voor tuinen die wij niet zelf aanlegden." },
+    { icon: HardHat, title: "Grond- en rioleringswerken", description: "Uitgraven, nivelleren en afbraak, afvoerleidingen, zichtputten en de aansluiting van regenwaterputten. Van A tot Z, door ons eigen team." },
   ];
 
   return (
     <section id="diensten" className="py-24 md:py-32 bg-card">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4">Onze expertise</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight text-balance">Diensten op maat van uw project</h2>
-          <p className="mt-6 text-muted-foreground text-lg leading-relaxed">Met jarenlange ervaring en een passie voor kwaliteit bieden wij een breed scala aan diensten voor uw buitenruimte.</p>
+          <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4">Diensten</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight text-balance">Wat wij voor u aanleggen</h2>
+          <p className="mt-6 text-muted-foreground text-lg leading-relaxed">Eén aannemer voor het volledige buitenwerk. U hoeft geen aparte firma's te coördineren voor het grondwerk, de oprit en de tuin.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="group p-8 bg-background border border-border rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <service.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="font-serif text-xl text-foreground mb-3">{service.title}</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+          {services.map((service) => (
+            <div key={service.title} className="border-t border-border pt-6">
+              <service.icon className="w-6 h-6 text-accent mb-4" aria-hidden="true" />
+              <h3 className="font-serif text-2xl text-foreground mb-3">{service.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              <a href="#contact" className="inline-flex items-center mt-6 text-primary text-sm font-medium hover:text-accent transition-colors">
-                Meer info <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
             </div>
           ))}
         </div>
@@ -158,24 +165,25 @@ function AboutSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative">
-            <div className="aspect-[4/5] rounded-lg overflow-hidden bg-muted">
-              <img
-                src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?q=80&w=2000&auto=format&fit=crop"
-                alt="Tobias Croes - Tuinaannemer"
-                loading="lazy"
-                className="w-full h-full object-cover"
+            <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-muted">
+              {/* TODO: vervangen door echte foto van Tobias op de werf */}
+              <Image
+                src="/images/project 10.1.jpg"
+                alt="Werf van Croes Construct: aanleg van een terras met laser, kruiwagen en stapels tegels"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-lg -z-10" />
           </div>
 
           <div>
             <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4">Over ons</p>
             <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-6">Maak kennis met Tobias Croes</h2>
             <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-              <p>Al van jongs af aan heb ik een passie voor de natuur en het werken met mijn handen. Wat begon als een fascinatie voor mijn grootvaders tuin, groeide uit tot mijn levenswerk: het creëren van prachtige buitenruimtes waarin mensen kunnen genieten en tot rust komen.</p>
-              <p>Met Croes Construct breng ik die passie elke dag in de praktijk. Of het nu gaat om een gezellig terras, een strakke oprit of een complete tuinrenovatie — ik ga voor niets minder dan perfectie. Persoonlijk contact, eerlijk advies en vakmanschap tot in de puntjes, daar sta ik voor.</p>
-              <p>Samen met mijn team werk ik doorheen heel België aan projecten die het verschil maken. Uw tuin is meer dan een stukje grond — het is een plek om herinneringen te maken. En daar help ik graag bij.</p>
+              <p>Mijn interesse in tuinen begon in de tuin van mijn grootvader. Daar leerde ik hoe je met je handen iets maakt dat jaren meegaat.</p>
+              <p>Met Croes Construct doe ik dat nu elke dag: terrassen, opritten, omheiningen en volledige tuinrenovaties. Persoonlijk contact, eerlijk advies en werk dat netjes wordt afgewerkt: daar sta ik voor.</p>
+              <p>Samen met mijn team werk ik in heel West-Vlaanderen, met de meeste werven aan de Kust. Voor grondwerken gaan we soms ook verder.</p>
             </div>
             <div className="mt-8 pt-8 border-t border-border">
               <p className="font-serif text-xl text-foreground">Tobias Croes</p>
@@ -271,7 +279,7 @@ function ProjectsSection() {
               onClick={() => openLightbox(index)}
               className={`group relative overflow-hidden rounded-lg cursor-pointer ${index === 0 ? "col-span-2 aspect-video" : "aspect-[4/3]"}`}
             >
-              <img src={src} alt={`${projects[activeProject].title} foto ${index + 1}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={src} alt={`${projects[activeProject].title}: ${projects[activeProject].category.toLowerCase()} door Croes Construct, foto ${index + 1}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="w-12 h-12 bg-background/90 rounded-full flex items-center justify-center">
@@ -296,7 +304,7 @@ function ProjectsSection() {
             </svg>
           </button>
           <div className="max-w-5xl max-h-[85vh] mx-4" onClick={(e) => e.stopPropagation()}>
-            <img src={activeImages[currentImage]} alt={`foto ${currentImage + 1}`} className="max-w-full max-h-[85vh] object-contain rounded-lg" />
+            <img src={activeImages[currentImage]} alt={`${projects[activeProject].title}, foto ${currentImage + 1}`} className="max-w-full max-h-[85vh] object-contain rounded-lg" />
             <p className="text-white/70 text-center mt-4 text-sm">{currentImage + 1} / {activeImages.length}</p>
           </div>
           <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 md:right-8 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors" aria-label="Volgende foto">
@@ -306,6 +314,57 @@ function ProjectsSection() {
           </button>
         </div>
       )}
+    </section>
+  );
+}
+
+const faqs = [
+  { q: "Is een plaatsbezoek en offerte gratis?", a: "Ja, zowel het plaatsbezoek als de offerte zijn gratis. We streven ernaar om de offerte binnen twee weken te bezorgen. Is het erg druk, dan duurt het maximaal een maand." },
+  { q: "Hoe rekenen jullie?", a: "Wij werken meestal in regie: u betaalt de werkuren plus het materiaal aan een vaste prijs. Het uurtarief vindt u in de offerte.\nVoor gazon hanteren we een vaste prijs, exclusief btw:\n• graszoden leggen: € 15 per m²\n• gazon inzaaien: € 10 per m²\nIn die prijs zit het uitspreiden van de aangevoerde grond, het harken en het leggen of inzaaien. De aanvoer van de grond zelf wordt apart aangerekend." },
+  { q: "Kan ik zelf mijn materiaal kiezen?", a: "Ja. Voor granulaat, grasdallen en waterdoorlatende verharding verwijzen we u naar Jatu (www.jatu.be), de website voor particulieren van Gravelart. Voor tegels kunt u terecht bij Interieur Center Dekeyser in Veurne of bij Verhelst Bouwmaterialen in Veurne of Oostende." },
+  { q: "Welk btw-tarief betaal ik?", a: "Is uw woning ouder dan 10 jaar en woont u er zelf? Dan geldt voor een deel van de werken 6% in plaats van 21%:\n• terras direct tegen de woning: 6%\n• oprit van de straat naar de voordeur, of naar een garage die deel uitmaakt van de woning: 6%\n• oprit naar een losstaande garage, of een parkeerplaats: 21%\n• terras midden in de tuin, tuinaanleg en omheiningen: 21%\nWij bekijken per offerte welk deel aan 6% kan, en zetten dat apart op de factuur." },
+  { q: "Moet ik een voorschot betalen?", a: "Meestal niet. Voor grotere projecten kunnen we een voorschot vragen. Dat staat dan duidelijk in de offerte." },
+  { q: "Heb ik een vergunning nodig voor een terras of oprit?", a: "Meestal niet. In Vlaanderen mag u zonder vergunning tot 80 m² verharden in de zij- en achtertuin. Dat is alles samen: terras, paden, oprit, kunstgras en grindzones. Het regenwater moet dan wel in uw eigen tuin in de grond kunnen lopen. Gaat u daarover, of legt u iets aan in de voortuin? Dan kijken wij samen met u na wat er nodig is. Sommige gemeenten hebben ook eigen regels." },
+  { q: "Kasseien, klinkers of grind?", a: "Wij leggen ze alle drie, voor terrassen, opritten en paden. Een combinatie kan ook, bijvoorbeeld rijstroken in kasseien met grind ertussen. Bij het plaatsbezoek bekijken we wat het best past bij uw woning en gebruik." },
+  { q: "Kunstgras of echt gras?", a: "Wij leggen beide. Echt gras kan als graszoden (€ 15 per m², excl. btw) of ingezaaid (€ 10 per m², excl. btw). Let op: kunstgras telt mee als verharding voor de vergunningsregel van 80 m²." },
+  { q: "Wat met regenwater en riolering?", a: "Ook dat doen wij: grondwerken, afvoerleidingen, zichtputten en de aansluiting van regenwaterputten. Zo hoeft u voor uw buitenwerk geen aparte firma te zoeken: ons eigen team doet het van A tot Z." },
+  { q: "Hoe hoog kan een omheining?", a: "Wij plaatsen omheiningen tot 2,50 m hoog. Tot 2 m in de zij- en achtertuin is geen vergunning nodig. In de voortuin mag een gesloten omheining zonder vergunning maximaal 1 m hoog zijn. Wilt u hoger, dan kijken wij samen met u na welke vergunning nodig is." },
+  { q: "Welke omheining houdt het aan zee?", a: "U kiest zelf het materiaal en de stijl. Wat voor ons vaststaat is de plaatsing: de palen gaan minstens 75 cm diep in de grond, zodat de omheining stormachtig weer aan de kust aankan." },
+  { q: "Hoe lang moet ik wachten voor jullie kunnen starten?", a: "Dat hangt af van de drukte. In de winter en de herfst kunnen we meestal snel starten. Vanaf het voorjaar is de planning vaak vol tot na de zomer. Wilt u in het voorjaar of de zomer klaar zijn, neem dan best in de winter al contact op." },
+  { q: "Hoe lang duren de werken?", a: "Een richtlijn:\n• oprit van ± 50 m²: een goede week\n• terras van ± 30 m²: drie à vier dagen, afhankelijk van de afwerking\n• omheining van ± 20 m: een werkweek\n• volledige renovatie van een kleine tuin: drie à vier weken, afhankelijk van wat er moet gebeuren" },
+  { q: "Wanneer leg je best een tuin aan?", a: "Verhardingen en omheiningen kunnen het hele jaar door, behalve bij vorst. Gazon en beplanting leg je best aan in het voorjaar of het najaar." },
+  { q: "Moet ik thuis zijn tijdens de werken?", a: "Nee. Wij hebben enkel toegang tot de tuin nodig, met water en stroom." },
+  { q: "Voeren jullie grond en afval af?", a: "Ja, wij voeren al het afval af dat u wilt laten weghalen. De afvoer zit niet in de prijs van het werk: ze wordt apart aangerekend en staat afzonderlijk op de factuur." },
+  { q: "In welke gemeenten werken jullie?", a: "Wij werken in heel West-Vlaanderen, vooral aan de Kust: Koksijde, De Panne, Nieuwpoort, Middelkerke, Veurne, Diksmuide, Oostende, Brugge en hun deelgemeenten. Voor grondwerken gaan we soms ook verder; vraag het gerust." },
+  { q: "Zijn jullie verzekerd en is er garantie?", a: "Wij hebben een BA-verzekering. Een vaste garantietermijn geven we niet, maar ligt een probleem aan ons werk, dan brengen we het in orde." },
+  { q: "Doen jullie ook tuinonderhoud?", a: "Ja. Naast de aanleg doen wij ook tuinonderhoud: snoeien, hagen scheren en het algemene onderhoud van uw tuin. Ook als wij uw tuin niet zelf aanlegden." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+};
+
+function FaqSection() {
+  return (
+    <section id="faq" className="py-24 md:py-32 bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4">Veelgestelde vragen</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-12">Wat klanten ons vaak vragen</h2>
+        <div className="border-t border-border">
+          {faqs.map(({ q, a }) => (
+            <details key={q} className="group border-b border-border">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg text-foreground [&::-webkit-details-marker]:hidden">
+                {q}
+                <span aria-hidden="true" className="text-2xl leading-none text-accent transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <p className="pb-6 text-muted-foreground leading-relaxed whitespace-pre-line">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -359,10 +418,10 @@ function ContactSection() {
           <div>
             <p className="text-primary-foreground/70 uppercase tracking-[0.2em] text-sm mb-4">Contact</p>
             <h2 className="font-serif text-3xl md:text-5xl text-primary-foreground leading-tight mb-6">
-              Klaar om uw droomproject te starten?
+              Vraag een vrijblijvende offerte
             </h2>
             <p className="text-primary-foreground/80 text-lg leading-relaxed mb-10">
-              Vul het formulier in en wij nemen zo snel mogelijk contact met u op voor een vrijblijvend gesprek.
+              Beschrijf kort wat u wilt laten doen. Wij bellen u terug om een plaatsbezoek af te spreken. Liever meteen praten? Bel gerust.
             </p>
             <div className="space-y-6">
               <a href="tel:+32478406967" className="flex items-center gap-4 text-primary-foreground group">
@@ -428,6 +487,7 @@ function ContactSection() {
                     <option value="opritten">Opritten</option>
                     <option value="terrassen">Terrassen</option>
                     <option value="snoeien">Snoeien van bomen</option>
+                    <option value="onderhoud">Tuinonderhoud</option>
                     <option value="grondwerken">Grond- en rioleringswerken</option>
                     <option value="totaalproject">Totaalproject (combinatie)</option>
                     <option value="andere">Andere</option>
@@ -475,12 +535,10 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-primary" />
-              </div>
+              <img src="/logo.jpg" alt="" className="w-10 h-10 rounded-full object-cover" />
               <span className="font-serif text-xl text-background tracking-tight">Croes Construct</span>
             </a>
-            <p className="text-background/60 leading-relaxed max-w-sm">Premium tuinaanleg en constructie in België. Vakmanschap, kwaliteit en oog voor detail sinds 2005.</p>
+            <p className="text-background/60 leading-relaxed max-w-sm">Tuinaannemer uit Koksijde sinds 2019. Tuinaanleg, terrassen, opritten, omheiningen en grondwerken in Koksijde, De Panne, Nieuwpoort, Middelkerke, Veurne, Diksmuide, Oostende en Brugge.</p>
           </div>
 
           <div>

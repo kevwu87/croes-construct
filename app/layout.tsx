@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Croes Construct | Tuinaannemer aan de Kust',
-    description: 'Vakmanschap dat uw buitenruimte transformeert. Actief in Koksijde, Oostende, Veurne, Nieuwpoort en Brugge.',
+    description: 'Tuinaanleg, terrassen, opritten en omheiningen in Koksijde, De Panne, Nieuwpoort, Middelkerke, Veurne, Diksmuide, Oostende en Brugge.',
     url: '/',
     siteName: 'Croes Construct',
-    images: ['/logo.jpg'],
+    images: [{ url: '/images/project%201.1.jpg', width: 1215, height: 911, alt: 'Tuin aangelegd door Croes Construct in Koksijde' }],
     locale: 'nl_BE',
     type: 'website',
   },
@@ -44,12 +44,18 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'HomeAndConstructionBusiness',
   name: 'Croes Construct',
-  image: 'https://www.croesconstruct.be/logo.jpg',
+  logo: 'https://www.croesconstruct.be/logo.jpg',
+  image: [
+    'https://www.croesconstruct.be/images/project%201.1.jpg',
+    'https://www.croesconstruct.be/images/project%207.7.jpg',
+  ],
   url: 'https://www.croesconstruct.be',
   telephone: '+32478406967',
   email: 'Croes-construct@hotmail.com',
   founder: { '@type': 'Person', name: 'Tobias Croes' },
-  areaServed: ['Koksijde', 'Oostende', 'Veurne', 'Nieuwpoort', 'Brugge'],
+  areaServed: ['Koksijde', 'De Panne', 'Nieuwpoort', 'Middelkerke', 'Veurne', 'Diksmuide', 'Oostende', 'Brugge', { '@type': 'AdministrativeArea', name: 'West-Vlaanderen' }],
+  vatID: 'BE1032219065',
+  foundingDate: '2019',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Viooltjesstraat 13',
@@ -68,6 +74,7 @@ const localBusinessSchema = {
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Terrassen' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Snoeien van bomen' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Grond- en rioleringswerken' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tuinonderhoud' } },
   ],
 }
 
