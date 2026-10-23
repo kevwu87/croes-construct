@@ -436,6 +436,11 @@ function ContactSection() {
               </div>
             ) : (
               <form className="space-y-4" onSubmit={handleSubmit}>
+                {/* Lokveld tegen spambots: onzichtbaar voor mensen, bots vullen het in */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <label htmlFor="website">Laat dit veld leeg</label>
+                  <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">Naam *</label>

@@ -27,6 +27,8 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => ({}));
+  // Lokveld ingevuld = bot: doe alsof het gelukt is, maar verstuur niets
+  if (body.website) return NextResponse.json({ success: true });
   // Formulierinvoer komt in een HTML-mail: afkappen en escapen
   const field = (key: string, max = 200) =>
     String(body[key] ?? '').trim().slice(0, max)
