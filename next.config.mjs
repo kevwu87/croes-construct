@@ -11,7 +11,7 @@ const csp = [
   `style-src 'self' 'unsafe-inline'${live}`,
   `img-src 'self' data: blob:${live}`,
   "font-src 'self'",
-  `connect-src 'self'${live}${preview ? ' wss://ws-us3.pusher.com' : ''}`,
+  `connect-src 'self'${live}`,
   `frame-src ${preview ? 'https://vercel.live' : "'none'"}`,
   "object-src 'none'",
   "base-uri 'self'",
