@@ -285,7 +285,7 @@ function ProjectsSection() {
               onClick={() => openLightbox(index)}
               className={`group relative overflow-hidden rounded-lg cursor-pointer ${index === 0 ? "col-span-2 aspect-video" : "aspect-[4/3]"}`}
             >
-              <img src={src} alt={`${projects[activeProject].title}: ${projects[activeProject].category.toLowerCase()} door Croes Construct, foto ${index + 1}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <Image src={src} alt={`${projects[activeProject].title}: ${projects[activeProject].category.toLowerCase()} door Croes Construct, foto ${index + 1}`} fill sizes={index === 0 ? "(min-width: 1280px) 810px, (min-width: 768px) 66vw, 100vw" : "(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"} className="object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="w-12 h-12 bg-background/90 rounded-full flex items-center justify-center">
