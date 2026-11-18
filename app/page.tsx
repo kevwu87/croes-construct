@@ -144,7 +144,7 @@ function ServicesSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p className="text-accent uppercase tracking-[0.2em] text-sm mb-4">Diensten</p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight text-balance">Wat wij voor u aanleggen</h2>
-          <p className="mt-6 text-muted-foreground text-lg leading-relaxed">Eén aannemer voor het volledige buitenwerk. U hoeft geen aparte firma's te coördineren voor het grondwerk, de oprit en de tuin.</p>
+          <p className="mt-6 text-muted-foreground text-lg leading-relaxed">Eén aannemer voor het volledige buitenwerk. U hoeft geen aparte firma&apos;s te coördineren voor het grondwerk, de oprit en de tuin.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
